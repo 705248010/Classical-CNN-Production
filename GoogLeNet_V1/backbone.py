@@ -60,6 +60,7 @@ class GoogLeNetV1(nn.Module):
             Inception(in_channels=[832, 832],
                       out_channels=[384, 384, 128, 128]),
             nn.AdaptiveAvgPool2d((1, 1)),
+            nn.Dropout2d(p=0.4),
             nn.Flatten()
         )
         self.net_5 = nn.Sequential(
@@ -85,7 +86,8 @@ class GoogLeNetV1(nn.Module):
         return output
 
 
-# a = GoogLeNetV1()
+a = GoogLeNetV1()
+print(a)
 # test = torch.rand((10, 3, 28, 28))
 # b = a(test)
 # print(b)
